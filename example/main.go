@@ -13,19 +13,37 @@ func main() {
 // }
 
 
- {
-    city := "Delhi"
-    marks := 85
+//  {
+//     city := "Delhi"
+//     marks := 85
 
-    fmt.Println(city)
-    fmt.Println(marks)
+//     fmt.Println(city)
+//     fmt.Println(marks)
+// }
+
+	//TODO -  create Structure
+	
+
+// creating a structure
+type Student struct {
+    name  string
+    age   int
+    marks int
+}
+
+ {
+    // creating structure variable
+    var s Student
+
+    s.name = "Gulshan"
+    s.age = 20
+    s.marks = 85
+
+    fmt.Println(s)
 }
 
 
-     
 
-
-	//TODO -  create Structure
 
 
 	//TODO Implement loop to print struct
