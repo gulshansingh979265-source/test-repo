@@ -25,22 +25,42 @@ func main() {
 	
 
 // creating a structure
-type Student struct {
-    name  string
-    age   int
-    marks int
-}
+// type Student struct {
+//     name  string
+//     age   int
+//     marks int
+// }
 
+//  {
+//     // creating structure variable
+//     var s Student
+
+//     s.name = "Gulshan"
+//     s.age = 20
+//     s.marks = 85
+
+//     fmt.Println(s)
+// }
+
+ // creating a structure 
+ type Employee struct{
+	name string
+	salary int
+	age int
+	empid string
+ }
+
+ // creating structure variable
  {
-    // creating structure variable
-    var s Student
+	var e Employee
+	e.name  = "ANJALI"
+	e.salary = 52000
+	e.age = 20
+	e.empid = "BTECH05"
 
-    s.name = "Gulshan"
-    s.age = 20
-    s.marks = 85
+	fmt.Println(e)
 
-    fmt.Println(s)
-}
+ }
 
 
 
