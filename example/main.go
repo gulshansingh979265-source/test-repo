@@ -43,41 +43,43 @@
 // }
 
 // creating a structure
-package main
-import "fmt"
-type Employee struct {
-	name   string
-	salary int
-	age    int
-	empid  string
-}
+// package main
+// import "fmt"
+// type Employee struct {
+// 	name   string
+// 	salary int
+// 	age    int
+// 	empid  string
+// }
 
-// creating structure variable
- func main(){
-	var e Employee
-	e.name  = "ANJALI"
-	e.salary = 52000
-	e.age = 20
-	e.empid = "BTECH05"
+// // creating structure variable
+//  func main(){
+// 	var e Employee
+// 	e.name  = "ANJALI"
+// 	e.salary = 52000
+// 	e.age = 20
+// 	e.empid = "BTECH05"
 
-	fmt.Println(e)
+// 	fmt.Println(e)
 
- }
+//  }
 
 //TODO Implement loop to print struct
-
-// define structure
+// package main
+// import "fmt"
+// // define structure
 // type Student struct {
 //     name  string
 //     age   int
 //     marks int
 // }
-
+//      func main(){
 //     // slice of structures
 //     students := []Student{
 //         {"Gulshan", 20, 85},
 //         {"Amit", 21, 78},
 //         {"Ravi", 22, 90},
+// 		{"Ramesh", 44,76},
 //     }
 
 //     // loop to print each structure
@@ -89,6 +91,38 @@ type Employee struct {
 //         fmt.Println("-----------")
 //     }
 // }
+
+package main
+
+import "fmt"
+
+// Struct definition (outside main)
+type Employee struct {
+	name   string
+	salary int
+	age    int
+	empid  string
+}
+
+func main() {
+
+	// Creating multiple employee records
+	employees := []Employee{
+		{name: "Anjali", salary: 52000, age: 20, empid: "BTECH05"},
+		{name: "Rahul", salary: 60000, age: 23, empid: "BTECH06"},
+		{name: "Neha", salary: 58000, age: 22, empid: "BTECH07"},
+	}
+
+	// Printing records using for loop
+	for i := 0; i < len(employees); i++ {
+		fmt.Println("Employee", i+1)
+		fmt.Println("Name  :", employees[i].name)
+		fmt.Println("Salary:", employees[i].salary)
+		fmt.Println("Age   :", employees[i].age)
+		fmt.Println("EmpID :", employees[i].empid)
+		fmt.Println("-------------------")
+	}
+}
 
 //TO
 // ============ BASIC SWITCH ============
