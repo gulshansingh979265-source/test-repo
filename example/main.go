@@ -3,49 +3,47 @@
 
 // func main() {
 	//TODO -  create vars
-	//  {
-	//     var age int = 20
-	//     var name string = "Gulshan"
-
-	//     fmt.Println(age)
-	//     fmt.Println(name)
-	// }
-
-	//  {
-	//     city := "Delhi"
-	//     marks := 85
-
-	//     fmt.Println(city)
-	//     fmt.Println(marks)
-	// }
-
-	//TODO -  create Structure
-
 	package main
 
 import "fmt"
 
-// Step 1: Define a structure
-type Student struct {
-    name  string
-    age   int
-    marks float64
-}
+	 func main(){
+	    var age int = 20
+	    var name string = "Gulshan"
 
-func main() {
-    // Step 2: Create a variable of struct type
-    var s1 Student
+	    fmt.Println(age)
+	    fmt.Println(name)
+	}
 
-    // Step 3: Assign values to struct fields
-    s1.name = "Gulshan"
-    s1.age = 20
-    s1.marks = 85.5
+	 
 
-    // Step 4: Print struct values
-    fmt.Println("Name:", s1.name)
-    fmt.Println("Age:", s1.age)
-    fmt.Println("Marks:", s1.marks)
-}
+	//TODO -  create Structure
+
+// 	package main
+
+// import "fmt"
+
+// // Step 1: Define a structure
+// type Student struct {
+//     name  string
+//     age   int
+//     marks float64
+// }
+
+// func main() {
+//     // Step 2: Create a variable of struct type
+//     var s1 Student
+
+//     // Step 3: Assign values to struct fields
+//     s1.name = "Gulshan"
+//     s1.age = 20
+//     s1.marks = 85.5
+
+//     // Step 4: Print struct values
+//     fmt.Println("Name:", s1.name)
+//     fmt.Println("Age:", s1.age)
+//     fmt.Println("Marks:", s1.marks)
+// }
 
 
 	// creating a structure
