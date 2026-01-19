@@ -1,23 +1,20 @@
 // package main
 
-
 // func main() {
-	//TODO -  create vars
-	package main
+//TODO -  create vars
+// package main
 
-import "fmt"
+// import "fmt"
 
-	 func main(){
-	    var age int = 20
-	    var name string = "Gulshan"
+// 	 func main(){
+// 	    var age int = 20
+// 	    var name string = "Gulshan"
 
-	    fmt.Println(age)
-	    fmt.Println(name)
-	}
+// 	    fmt.Println(age)
+// 	    fmt.Println(name)
+// 	}
 
-	 
-
-	//TODO -  create Structure
+//TODO -  create Structure
 
 // 	package main
 
@@ -45,67 +42,66 @@ import "fmt"
 //     fmt.Println("Marks:", s1.marks)
 // }
 
+// creating a structure
+package main
+import "fmt"
+type Employee struct {
+	name   string
+	salary int
+	age    int
+	empid  string
+}
 
-	// creating a structure
-	// package main
-	// import "fmt"
-	// type Employee struct {
-	// 	name   string
-	// 	salary int
-	// 	age    int
-	// 	empid  string
-	// }
+// creating structure variable
+ func main(){
+	var e Employee
+	e.name  = "ANJALI"
+	e.salary = 52000
+	e.age = 20
+	e.empid = "BTECH05"
 
-	// // creating structure variable
-	//  func main(){
-	// 	var e Employee
-	// 	e.name  = "ANJALI"
-	// 	e.salary = 52000
-	// 	e.age = 20
-	// 	e.empid = "BTECH05"
+	fmt.Println(e)
 
-	// 	fmt.Println(e)
+ }
 
-	//  }
+//TODO Implement loop to print struct
 
-	//TODO Implement loop to print struct
+// define structure
+// type Student struct {
+//     name  string
+//     age   int
+//     marks int
+// }
 
-	// define structure
-	// type Student struct {
-	//     name  string
-	//     age   int
-	//     marks int
-	// }
+//     // slice of structures
+//     students := []Student{
+//         {"Gulshan", 20, 85},
+//         {"Amit", 21, 78},
+//         {"Ravi", 22, 90},
+//     }
 
-	//     // slice of structures
-	//     students := []Student{
-	//         {"Gulshan", 20, 85},
-	//         {"Amit", 21, 78},
-	//         {"Ravi", 22, 90},
-	//     }
+//     // loop to print each structure
+//     for i := 0; i < len(students); i++ {
+//         fmt.Println("Student", i+1)
+//         fmt.Println("Name :", students[i].name)
+//         fmt.Println("Age  :", students[i].age)
+//         fmt.Println("Marks:", students[i].marks)
+//         fmt.Println("-----------")
+//     }
+// }
 
-	//     // loop to print each structure
-	//     for i := 0; i < len(students); i++ {
-	//         fmt.Println("Student", i+1)
-	//         fmt.Println("Name :", students[i].name)
-	//         fmt.Println("Age  :", students[i].age)
-	//         fmt.Println("Marks:", students[i].marks)
-	//         fmt.Println("-----------")
-	//     }
-	// }
-
-	//TO
-	// ============ BASIC SWITCH ============
-	// 	fmt.Println("--- Basic Switch ---")
-	// 	day := "Monday"
-	// 	switch day {
-	// 	case "Monday":
-	// 		fmt.Println("Start of week 📅")
-	// 	case "Friday":
-	// 		fmt.Println("Almost weekend 🎉")
-	// 	case "Saturday", "Sunday":
-	// 		fmt.Println("Weekend! 🏖️")
-	// 	default:
-	// 		fmt.Println("Midweek day")
-	// 	}
+//TO
+// ============ BASIC SWITCH ============
+// 	fmt.Println("--- Basic Switch ---")
+// 	day := "Monday"
+// 	switch day {
+// 	case "Monday":
+// 		fmt.Println("Start of week 📅")
+// 	case "Friday":
+// 		fmt.Println("Almost weekend 🎉")
+// 	case "Saturday", "Sunday":
+// 		fmt.Println("Weekend! 🏖️")
+// 	default:
+// 		fmt.Println("Midweek day")
+// 	}
 
