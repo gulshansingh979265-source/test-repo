@@ -17,8 +17,13 @@ func main() {
 	// emp = employee.CreateEmployeeData()
 	// employee.Display(emp)
 
-	//  var stud []student.Student
-	// emp = employee.CreateEmployeeData()
+    var stud1 []student.Student
+    stud = student.CreateStudentData()
+    student.Display(stud1)
+
+
+
+
 	println("\n\nbefore add\n\n")
 	student.Display(stud)
 	var newlist []student.Student
@@ -28,5 +33,11 @@ func main() {
 	newlist = student.DeleteStudent(newlist, "Rahul")
 	println("\n\nafter delete\n\n")
 	student.Display(newlist)
+
+	newlist = student.UpdateStudent(newlist, "Neha",1200000,20)
+	println("\n\nafter update\n\n")
+	student.Display(newlist)
+
+    
 
 }
