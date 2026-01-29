@@ -7,6 +7,8 @@ import (
 
 func main() {
 
+	println("\n\nbefore add\n\n")
+
 	stud := []student.Student{
 		{Name: "Anjali", Salary: 52000, Age: 20, StudID: "BTECH05"},
 		{Name: "Rahul", Salary: 60000, Age: 23, StudID: "BTECH06"},
@@ -17,12 +19,9 @@ func main() {
 	// emp = employee.CreateEmployeeData()
 	// employee.Display(emp)
 
-    var stud1 []student.Student
-    stud = student.CreateStudentData()
-    student.Display(stud1)
-
-
-
+	var stud1 []student.Student
+	stud = student.CreateStudentData()
+	student.Display(stud1)
 
 	println("\n\nbefore add\n\n")
 	student.Display(stud)
@@ -34,10 +33,8 @@ func main() {
 	println("\n\nafter delete\n\n")
 	student.Display(newlist)
 
-	newlist = student.UpdateStudent(newlist, "Neha",1200000,20)
+	newlist = student.UpdateStudent(newlist, "Neha", 1200000, 20)
 	println("\n\nafter update\n\n")
 	student.Display(newlist)
-
-    
 
 }

@@ -20,7 +20,6 @@ func CreateStudentData() []Student {
 	return students
 }
 
-
 func Display(students []Student) {
 	for i := 0; i < len(students); i++ {
 		fmt.Println("Student", i+1)
@@ -38,9 +37,10 @@ func AddStudent(students []Student) []Student {
 		Name:   "Rohan",
 		Salary: 75000,
 		Age:    23,
-		StudID: "ST-001",}
+		StudID: "ST-001",
+	}
 
-		stud2 := Student{
+	stud2 := Student{
 		Name:   "Kishan",
 		Salary: 95000,
 		Age:    18,
@@ -53,9 +53,6 @@ func AddStudent(students []Student) []Student {
 		Age:    20,
 		StudID: "ST-003",
 	}
-	
-	
-
 
 	// append the student
 	students = append(students, stud1)
@@ -88,4 +85,3 @@ func UpdateStudent(students []Student, name string, newSalary int, newAge int) [
 
 	return students
 }
-
