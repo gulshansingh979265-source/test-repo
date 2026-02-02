@@ -1,0 +1,17 @@
+# ✅ Use Golang Image
+FROM golang:1.21
+
+# ✅ Work directory inside container
+WORKDIR /app
+
+# ✅ Copy all files into container
+COPY . .
+
+# ✅ Download dependencies
+RUN go mod tidy
+
+# ✅ Build the Go program
+RUN go build -o main .
+
+# ✅ Run the program
+CMD ["./main"]
