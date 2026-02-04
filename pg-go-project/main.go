@@ -12,7 +12,7 @@ import (
 func main() {
 
 	// ✅ PostgreSQL DSN
-	dsn := "postgres://testuser:testpass@127.0.0.1:5432/testdb?sslmode=disable"
+	dsn := "postgres://testuser:testpass@localhost:5432/testdb?sslmode=disable"
 
 	// ✅ Connect Database
 	conn, err := pgx.Connect(context.Background(), dsn)
@@ -47,10 +47,10 @@ func main() {
 		log.Fatal("❌ Table Create Error:", err)
 	}
 
-	fmt.Println("✅ Student Table Created!")
+	fmt.Println("✅ Student Table Ready!")
 
 	// ====================================================
-	// ✅ STEP 2: Insert Student Data
+	// ✅ STEP 2: Insert Student Only Once (Optional)
 	// ====================================================
 	insertSQL := `
 	INSERT INTO students (name, age)
@@ -61,32 +61,34 @@ func main() {
 		log.Fatal("❌ Insert Error:", err)
 	}
 
-	fmt.Println("✅ Student Inserted Successfully!")
+	fmt.Println("✅ Student Inserted!")
 
 	// ====================================================
-	// ✅ STEP 3: Fetch Students
+	// ✅ STEP 3: Show ALL Students Data (SELECT *)
 	// ====================================================
-	fmt.Println("\n📌 Student List:")
+	fmt.Println("\n📌 Showing All Students Data:")
 
-	rows, err := conn.Query(context.Background(), "SELECT id, name, age FROM students")
+	rows, err := conn.Query(context.Background(), "SELECT * FROM students")
 	if err != nil {
 		log.Fatal("❌ Select Error:", err)
 	}
 	defer rows.Close()
 
 	for rows.Next() {
+
 		var id int
 		var name string
 		var age int
 
 		err := rows.Scan(&id, &name, &age)
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal("❌ Scan Error:", err)
 		}
 
 		fmt.Printf("ID: %d | Name: %s | Age: %d\n", id, name, age)
 	}
 
-	fmt.Println("\n✅ Done!")
+	fmt.Println("\n✅ All Data Displayed Successfully!")
 }
+
 
