@@ -4,91 +4,50 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"time"
+	"net/http"
+
+	"go-pg-test/db"
+	"go-pg-test/handlers"
 
 	"github.com/jackc/pgx/v5"
 )
 
 func main() {
-
-	// ✅ PostgreSQL DSN
+	// PostgreSQL DSN (adjust if your local config is different)
 	dsn := "postgres://testuser:testpass@localhost:5432/testdb?sslmode=disable"
 
-	// ✅ Connect Database
-	conn, err := pgx.Connect(context.Background(), dsn)
+	ctx := context.Background()
+
+	// Connect to PostgreSQL
+	conn, err := pgx.Connect(ctx, dsn)
 	if err != nil {
-		log.Fatal("❌ Connection failed:", err)
+		log.Fatalf("database connection failed: %v", err)
 	}
-	defer conn.Close(context.Background())
+	defer conn.Close(ctx)
 
-	fmt.Println("✅ Connected Successfully!")
-
-	// ✅ Check DB Time
-	var now time.Time
-	err = conn.QueryRow(context.Background(), "SELECT NOW()").Scan(&now)
-	if err != nil {
-		log.Fatal("❌ Time Query Error:", err)
+	// Ensure students table exists
+	if err := db.EnsureStudentsTable(ctx, conn); err != nil {
+		log.Fatalf("create table failed: %v", err)
 	}
 
-	fmt.Println("DB Time:", now.Format("2006-01-02 15:04:05"))
-
-	// ====================================================
-	// ✅ STEP 1: Create Student Table
-	// ====================================================
-	createTableSQL := `
-	CREATE TABLE IF NOT EXISTS students (
-		id SERIAL PRIMARY KEY,
-		name TEXT NOT NULL,
-		age INT NOT NULL
-	);`
-
-	_, err = conn.Exec(context.Background(), createTableSQL)
-	if err != nil {
-		log.Fatal("❌ Table Create Error:", err)
+	// Insert example students into PostgreSQL
+	if err := db.SeedStudents(ctx, conn); err != nil {
+		log.Printf("seeding students failed: %v", err)
 	}
 
-	fmt.Println("✅ Student Table Ready!")
+	// /students GET handler to list all students from PostgreSQL (defined in handlers package)
+	http.HandleFunc("/students", handlers.StudentsHandler(conn))
 
-	// ====================================================
-	// ✅ STEP 2: Insert Student Only Once (Optional)
-	// ====================================================
-	insertSQL := `
-	INSERT INTO students (name, age)
-	VALUES ($1, $2);`
+	// Simple HTTP server on port 3000
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "Simple Go server running on :3000")
+	})
 
-	_, err = conn.Exec(context.Background(), insertSQL, "Amit", 20)
-	if err != nil {
-		log.Fatal("❌ Insert Error:", err)
+	// /hello handler in separate package
+	http.HandleFunc("/hello", handlers.HelloHandler)
+
+	log.Println("Server listening on :3000")
+	if err := http.ListenAndServe(":3000", nil); err != nil {
+		log.Fatal(err)
 	}
-
-	fmt.Println("✅ Student Inserted!")
-
-	// ====================================================
-	// ✅ STEP 3: Show ALL Students Data (SELECT *)
-	// ====================================================
-	fmt.Println("\n📌 Showing All Students Data:")
-
-	rows, err := conn.Query(context.Background(), "SELECT * FROM students")
-	if err != nil {
-		log.Fatal("❌ Select Error:", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-
-		var id int
-		var name string
-		var age int
-
-		err := rows.Scan(&id, &name, &age)
-		if err != nil {
-			log.Fatal("❌ Scan Error:", err)
-		}
-
-		fmt.Printf("ID: %d | Name: %s | Age: %d\n", id, name, age)
-	}
-
-	fmt.Println("\n✅ All Data Displayed Successfully!")
 }
-
-
