@@ -5,8 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/jackc/pgx/v5"
 	"go-pg-test/db"
+
+	"github.com/jackc/pgx/v5"
 )
 
 // StudentsHandler returns an http.HandlerFunc that lists all students from Postgres.
@@ -30,4 +31,3 @@ func StudentsHandler(conn *pgx.Conn) http.HandlerFunc {
 		}
 	}
 }
-
